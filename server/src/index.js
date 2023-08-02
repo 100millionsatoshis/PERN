@@ -8,6 +8,13 @@ const app = express();
 // This constant is likely used to specify the port on which the server will listen for incoming requests.
 const { PORT } = require("./constants");
 
+//Import routes
+const authRoutes = require("./routes/auth")
+
+//initialize the routes 
+
+app.use("/api", authRoutes);
+
 // 4. Defining a function named 'appStart'.
 // This function is used to start the server and listen for incoming requests.
 const appStart = () => {
