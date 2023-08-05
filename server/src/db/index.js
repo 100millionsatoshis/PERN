@@ -4,9 +4,9 @@ const pool = new Pool({
   host: "localhost",
   database: "marra",
   password: "zx90as89qw78",
-  port: 5432,
+  port: 5432
 });
 
-module.export = {
+module.exports = {
   query: (text, params) => pool.query(text, params),
 };
