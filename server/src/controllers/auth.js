@@ -9,3 +9,12 @@ exports.getUsers = async (req, res) => {
     console.log(error.message);
   }
 };
+
+exports.register = async (req, res) => {
+  console.log("gggg");
+  try {
+    console.log("validation passed");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
