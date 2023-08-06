@@ -8,6 +8,10 @@ const app = express();
 // This constant is likely used to specify the port on which the server will listen for incoming requests.
 const { PORT } = require("./constants");
 
+//initialize the middlewares
+
+app.use(express.json());
+
 //Import routes
 const authRoutes = require("./routes/auth");
 

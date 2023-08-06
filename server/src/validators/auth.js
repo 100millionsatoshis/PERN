@@ -9,7 +9,10 @@ const password = check("password")
 //email
 const email = check("email")
   .isEmail()
-  .withMessage("Iltimos emailni to'g'ri kiriting.");
+  .withMessage("Iltimos emailni to'g'ri kiriting.")
+  .custom(async (emailValue, { req }) => {
+    console.log("Email value in request:", req.body);
+  });
 //check if email exists
 const emailExists = check("email").custom(async (value) => {
   const { rows } = await db.query("SELECT * FROM talaba WHERE email = $1", [

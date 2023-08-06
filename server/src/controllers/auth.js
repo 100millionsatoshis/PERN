@@ -11,7 +11,6 @@ exports.getUsers = async (req, res) => {
 };
 
 exports.register = async (req, res) => {
-  console.log("gggg");
   try {
     console.log("validation passed");
   } catch (error) {
