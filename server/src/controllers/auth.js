@@ -1,5 +1,5 @@
 const db = require("../db");
-
+const { hash } = require("bcryptjs");
 exports.getUsers = async (req, res) => {
   try {
     console.log("here", db);
@@ -11,9 +11,23 @@ exports.getUsers = async (req, res) => {
 };
 
 exports.register = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    console.log("validation passed");
+    const hashedPassword = await hash(password, 10);
+
+    await db.query("insert into talaba(email, password) values ($1 , $2)", [
+      email,
+      hashedPassword,
+    ]);
+
+    return res.status(201).json({
+      success: true,
+      message: "Ro'yxatdan o'tildi",
+    });
   } catch (error) {
+    return res.status(500).json({
+      error: error.message,
+    });
     console.log(error.message);
   }
 };
