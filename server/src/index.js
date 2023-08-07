@@ -7,10 +7,12 @@ const app = express();
 // 3. Importing the constant 'PORT' from the 'constants.js' file located in the same 'src' folder.
 // This constant is likely used to specify the port on which the server will listen for incoming requests.
 const { PORT } = require("./constants");
+const cookieParser = require("cookie-parser");
 
 //initialize the middlewares
 
 app.use(express.json());
+app.use(cookieParser());
 
 //Import routes
 const authRoutes = require("./routes/auth");
