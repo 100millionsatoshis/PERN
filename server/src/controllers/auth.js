@@ -1,7 +1,7 @@
 const db = require("../db");
 const { hash } = require("bcryptjs");
 const { sign } = require("jsonwebtoken");
-const {SECRET} = require('../constants')
+const { SECRET } = require("../constants");
 
 exports.getUsers = async (req, res) => {
   try {
@@ -46,15 +46,42 @@ exports.login = async (req, res) => {
     email: user.email,
   };
   try {
-    const token = await sign(payload, SECRET)
-    return res.status(200).cookie('token', token, {httpOnly: true}). json({
+    const token = await sign(payload, SECRET);
+    return res.status(200).cookie("token", token, { httpOnly: true }).json({
       success: true,
-      message: 'Kirish amalga oshdi'
+      message: "Kirish amalga oshdi",
     });
   } catch (error) {
     return res.status(500).json({
       error: error.message,
     });
     console.log(error.message);
-  } 
+  }
+};
+
+exports.protected = async (req, res) => {
+  try {
+    return res.status(200).json({
+      info: "protected info",
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+exports.logout = async (req, res) => {
+  try {
+    return res
+      .status(200)
+      .clearCookie("token", { httpOnly: true })
+      .json({
+        success: true,
+        message: "Chiqish muvaffaqiyatli amalga oshdi",
+      });
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message,
+    });
+    console.log(error.message);
+  }
 };
