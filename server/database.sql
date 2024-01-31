@@ -9,4 +9,4 @@ create table talaba(
   student_surname varchar(50),
   gender varchar(10),
   date_of_birth date
-)
+);
