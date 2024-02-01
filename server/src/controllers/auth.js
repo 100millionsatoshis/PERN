@@ -9,7 +9,7 @@ exports.getUsers = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      talaba: response.rows,
+      talaba: rows,
     });
   } catch (error) {
     console.log(error.message);
@@ -75,7 +75,7 @@ exports.logout = async (req, res) => {
       .clearCookie("token", { httpOnly: true })
       .json({
         success: true,
-        message: "Chiqish muvaffaqiyatli amalga oshdi",
+        message: "Siz platformadan chiqdingiz. Yana bog'languncha xayr!",
       });
   } catch (error) {
     return res.status(500).json({
