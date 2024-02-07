@@ -39,7 +39,8 @@ const appStart = () => {
       console.log(`The app is running at http://localhost:${PORT}`);
     });
   } catch (error) {
-    // 6. If there is an error while starting the server, the catch block will handle the error and log it to the console.
+    // 6. If there is an error while starting the server, the catch block will handle the error and log 
+    //it to the console.
     console.log(`Error: ${error.message}`);
   }
 };
