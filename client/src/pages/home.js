@@ -1,10 +1,11 @@
-
+import Layout from "../components/layout"
 const Home = () => {
   console.log('hh')
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <Layout>
+      <h1>Marra Camp</h1>
+      <p>Dasturlashni chaynab beramiz!</p>
+    </Layout>
   )
 }
 

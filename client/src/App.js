@@ -10,6 +10,7 @@ import Dashboard from "./pages/dashboard"
 import Register from "./pages/register"
 import Login from "./pages/login"
 
+
 const PrivateRoutes = () => {
   const isAuth = false
 
@@ -25,6 +26,7 @@ const RestrictedRoutes = () => {
 const App = () => {
   return (
     <BrowserRouter>
+
     <Routes>
       <Route path="/" element={<Home/>} />
 
