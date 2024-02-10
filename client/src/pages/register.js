@@ -20,7 +20,8 @@ const Register = () => {
         const response = await onRegistration (values)
         console.log(response)
       } catch (error) {
-        console.log(error.response.data.errors)
+        console.log(error.response.data.errors[0].msg)
+        setError(error.response.data.errors[0].msg)
       }
     }
 
@@ -56,6 +57,9 @@ const Register = () => {
               required
               value={values.password} />
           </div>
+            
+          <div style={{color: "red", margin: "10px 0"}}>{error}</div>
+
           <button type="submit" className="btn btn-primary">Ro'yxatdan o'tish /register </button>
         </form>
       </Layout>
