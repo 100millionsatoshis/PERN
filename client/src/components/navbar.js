@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
-
+import { useSelector } from 'react-redux'
 const Navbar = () => {
-  const isAuth = false
+  const {isAuth} = useSelector((state) => state.auth)
 
   return (
     <nav className='navbar navbar-light bg-light'>

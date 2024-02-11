@@ -17,16 +17,17 @@ const Register = () => {
     const onSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await onRegistration (values)
-        console.log(response)
+        const {data} = await onRegistration (values)
+        
+        setError("")
+        setSuccess(data.message)
+        setValues({email: "", password: ""})
       } catch (error) {
         console.log(error.response.data.errors[0].msg)
         setError(error.response.data.errors[0].msg)
+        setSuccess("")
       }
     }
-
-
-
     
     return (
       <Layout> 
@@ -52,14 +53,14 @@ const Register = () => {
               className="form-control" 
               id="password"
               name="password"
-              placeholder="kalit so'zni kiriting"
+              placeholder="kalit so'zni kiriting" 
               onChange={(e) => onChange(e)}
               required
               value={values.password} />
           </div>
-            
-          <div style={{color: "red", margin: "10px 0"}}>{error}</div>
 
+          <div style={{color: "red", margin: "10px 0"}}>{error}</div>
+          <div style={{color: "green", margin: "10px 0"}}>{success}</div>
           <button type="submit" className="btn btn-primary">Ro'yxatdan o'tish /register </button>
         </form>
       </Layout>

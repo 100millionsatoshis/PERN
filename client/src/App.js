@@ -9,16 +9,19 @@ import Home from "./pages/home"
 import Dashboard from "./pages/dashboard"
 import Register from "./pages/register"
 import Login from "./pages/login"
+import { useSelector } from "react-redux"
 
 
 const PrivateRoutes = () => {
-  const isAuth = false
+  const {isAuth} = useSelector((state) => state.auth)
+  
 
   return <> {isAuth ? <Outlet /> : <Navigate to="/login" />}</>
 }
 
 const RestrictedRoutes = () => {
-  const isAuth = false
+  const {isAuth} = useSelector((state) => state.auth)
+ 
 
   return <> {!isAuth ? <Outlet /> : <Navigate to="/dashboard" />}</>
 }
